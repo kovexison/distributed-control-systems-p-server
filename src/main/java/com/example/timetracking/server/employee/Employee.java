@@ -1,6 +1,5 @@
 package com.example.timetracking.server.employee;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,7 +16,6 @@ import java.util.Objects;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(hidden = true)
     private Integer id;
 
     private String name;
@@ -25,7 +23,6 @@ public class Employee {
 
     @Column(updatable = false, nullable = false)
     @CreationTimestamp
-    @ApiModelProperty(hidden = true)
     private Date enrollDate;
 
     @Override
