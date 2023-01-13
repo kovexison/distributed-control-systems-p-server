@@ -1,10 +1,12 @@
 package com.example.timetracking.server.employee;
 
 import lombok.*;
+import net.bytebuddy.asm.Advice;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,14 +18,26 @@ import java.util.Objects;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private Integer id;
 
+    @Column(name = "name")
     private String name;
+    @Column(name = "hourly_rate")
     private int hourlyRate;
 
     @Column(updatable = false, nullable = false)
     @CreationTimestamp
     private Date enrollDate;
+
+    @Column(name = "is_active")
+    private boolean isActive;
+
+    @Column(name = "position")
+    private String position;
+
+    @Column(name = "image_url")
+    private String imageURL;
 
     @Override
     public boolean equals(Object o) {
@@ -37,4 +51,6 @@ public class Employee {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+
 }
